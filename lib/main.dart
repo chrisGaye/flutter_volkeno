@@ -1,71 +1,108 @@
 //Auteur : Amadou GAYE
 
+// import 'dart:convert';
+
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(EmailApp());
 
-class MyApp extends StatelessWidget {
+class EmailApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Test',
       theme: ThemeData( primarySwatch: Colors.blue,),
-      home: MyHomePage(title: 'Flutter App'),
+      home: MessageList(title: 'Email App OK oh'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
+class MessageList extends StatefulWidget {
+    
   final String title;
-
+  
+  MessageList({this.title});
+  
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<StatefulWidget> createState() => _MessageListState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _MessageListState extends State<StatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    
+    var messages = const [
+    {
+        "subject": "My first message",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer...Nous developpons une App using Flutter. Donc pour commencer..."
+     },
+     {
+        "subject": "My second message",
+        "body" : "Veuillez lire ce message svp..."
+     },
+     {
+        "subject": "My 3rd message",
+        "body" : "Gaye vous dit bonjour et vous souhaite une bonne journée"
+     },
+     {
+        "subject": "My 4th message",
+        "body" : "Salut les amis, on va devoir tout recommencer d'ici la semaine prochaine"
+     },
+     {
+        "subject": "Nouvelle entrée avec JSON",
+        "body" : "Entrée avec json pose problème avec la methode initState() qui refuse...Du coup j'ai tout mis dans le main.dart"
+     },
+     {
+        "subject": "Formation",
+        "body" : "Waoh the flutter is cool, you can do many things.Waoh the flutter is cool, you can do many things."
+     }
+];
+     
+    // Future loadMessageList() async{
+    //   var content = await rootBundle.loadString('data/message.json');
+    //   var collection = json.decode(content);
+
+    //   setState(() {
+    //     messages = collection;
+    //   });
+
+    //   print(content);
+      
+    //   void initState() {
+    //     loadMessageList();
+    //     super.initState();
+    // }
+      
+    // }
+
     return Scaffold(
       appBar: AppBar(        
-        title: Text(widget.title),
+        title: Text('Email App Test'),
       ),
-      body: Center(
-        
-        child: Column(
-        
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              'Oh Le bug est reglé mdr !'
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
+      body:ListView.builder(
+        itemCount: 6,
+        // separatorBuilder: (Context, index) => Divider(),
+        itemBuilder: (BuildContext context, int index){
+          var message = messages[index];
+            return ListTile(
+              title: Text(message['subject']),
+              isThreeLine: true,
+              trailing: Text('2'),
+               leading: CircleAvatar(
+                 child: Text("P1"),
+               ),
+              subtitle: Text(
+                message['body'],
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                ),
+            );
+        },
+      )
+             
     );
   }
 }

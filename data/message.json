@@ -1,0 +1,22 @@
+[
+    {
+        "subject": "My first message",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer...Nous developpons une App using Flutter. Donc pour commencer..."
+     },
+     {
+        "subject": "My second message",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer..."
+     },
+     {
+        "subject": "My 3rd message",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer..."
+     },
+     {
+        "subject": "My 4th message",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer..."
+     },
+     {
+        "subject": "Nouvelle entrée avec JSON",
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer..."
+     }
+]
