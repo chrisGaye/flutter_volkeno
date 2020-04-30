@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
+import 'package:http/http.dart' as http;
+
 void main() => runApp(EmailApp());
 
 class EmailApp extends StatelessWidget {
@@ -14,7 +16,7 @@ class EmailApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Test',
-      theme: ThemeData( primarySwatch: Colors.blue,),
+      theme: ThemeData( primarySwatch: Colors.green,),
       home: MessageList(title: 'Email App OK oh'),
     );
   }
@@ -30,10 +32,11 @@ class MessageList extends StatefulWidget {
   State<StatefulWidget> createState() => _MessageListState();
 }
 
-class _MessageListState extends State<StatefulWidget> {
+class _MessageListState extends State<MessageList> {
 
   @override
   Widget build(BuildContext context) {
+
     var messages = const [
     {
         "subject": "My first message",
@@ -59,9 +62,12 @@ class _MessageListState extends State<StatefulWidget> {
         "subject": "Formation",
         "body" : "Waoh the flutter is cool, you can do many things.Waoh the flutter is cool, you can do many things."
      }
+
 ];
      
     // Future loadMessageList() async{
+      // http.Response response = await http.get('http://www.mocky.io/v2/5eab1f903300005400760738');
+      // String content = response.body;
     //   var content = await rootBundle.loadString('data/message.json');
     //   var collection = json.decode(content);
 

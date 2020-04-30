@@ -1,36 +1,18 @@
-// import 'package:flutter/material.dart';
+// import 'package:json_annotation/json_annotation.dart';
 
-// class _MessagesList extends StatefulWidget {
+// part "Message.g.dart";   give error
 
-//   @override
-//   Widget build(BuildContext context) {
-//     var messages = const [];
+// @JsonSerializable()
+// class Message{
+//   final String subject;
+//   final String body;
+  
+//   Message(this.subject, this.body);
 
-//     return Scaffold(
-//       appBar: AppBar(        
-//         title: Text(widget.title),
-//       ),
-//       body:ListView.builder(
-//         itemCount: 4,
-//         // separatorBuilder: (Context, index) => Divider(),
-//         itemBuilder: (BuildContext context, int index){
-//           var message = messages[index];
-//             return ListTile(
-//               title: Text(message['subject']),
-//               isThreeLine: true,
-//               trailing: Text('2'),
-//                leading: CircleAvatar(
-//                  child: Text("P1"),
-//                ),
-//               subtitle: Text(
-//                 message['body'],
-//                 maxLines: 2,
-//                 overflow: TextOverflow.ellipsis,
-//                 ),
-//             );
-//         },
-//       )
-             
-//     );
-//   }
+//   factory Message.fromJson(Map<String, dynamic> json) =>
+//    _$MessageFromJson(json);   give error
+
+//   subject = json['subject'];   give error
+  
 // }
+

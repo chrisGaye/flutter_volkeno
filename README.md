@@ -4,7 +4,7 @@ Formation sur Flutter by VOLKENO : https://www.volkeno.sn/
 
 ## Auteur
 
-Amadou GAYE
+Amadou GAYE, 
 Elève-ingenieur en Informatique / ESP Dakar
 
 
