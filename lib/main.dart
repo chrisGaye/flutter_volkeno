@@ -59,13 +59,14 @@ class _MessageListState extends State<MessageList> {
         "body" : "Entrée avec json pose problème avec la methode initState() qui refuse...Du coup j'ai tout mis dans le main.dart"
      },
      {
-        "subject": "Formation",
-        "body" : "Waoh the flutter is cool, you can do many things.Waoh the flutter is cool, you can do many things."
+        "subject": "JSON",
+        "body" : "The serialize method..."
      }
 
 ];
      
     // Future loadMessageList() async{
+      
       // http.Response response = await http.get('http://www.mocky.io/v2/5eab1f903300005400760738');
       // String content = response.body;
     //   var content = await rootBundle.loadString('data/message.json');
