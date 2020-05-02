@@ -1,6 +1,9 @@
 //Auteur : Amadou GAYE
 
 // import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
@@ -34,9 +37,10 @@ class MessageList extends StatefulWidget {
 
 class _MessageListState extends State<MessageList> {
 
+
   @override
   Widget build(BuildContext context) {
-
+    
     var messages = const [
     {
         "subject": "My first message",
@@ -65,13 +69,19 @@ class _MessageListState extends State<MessageList> {
 
 ];
      
-    // Future loadMessageList() async{
+    // List<MessageList> message = [];
+
+    // Future<dynamic> loadMessageList() async{
       
-      // http.Response response = await http.get('http://www.mocky.io/v2/5eab1f903300005400760738');
+    //   http.Response response = await http.get('http://www.mocky.io/v2/5eab1f903300005400760738');
+      
       // String content = response.body;
+      // List collection  = json.decode(content);
+      // List<MessageList> _messages =    
+      // collection.map((json) => message.fromJson(json)).toList();
+
     //   var content = await rootBundle.loadString('data/message.json');
     //   var collection = json.decode(content);
-
     //   setState(() {
     //     messages = collection;
     //   });
@@ -81,13 +91,17 @@ class _MessageListState extends State<MessageList> {
     //   void initState() {
     //     loadMessageList();
     //     super.initState();
-    // }
-      
+    // }  
     // }
 
     return Scaffold(
       appBar: AppBar(        
         title: Text('Email App Test'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.refresh), onPressed: (){
+             //On peut faire une action ici 
+          })
+        ],
       ),
       body:ListView.builder(
         itemCount: 6,
