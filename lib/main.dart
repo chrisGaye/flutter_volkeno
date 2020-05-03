@@ -1,18 +1,20 @@
 //Auteur : Amadou GAYE
 
 // import 'dart:convert';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:json_annotation/json_annotation.dart';
 
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'package:test_flutter/ComposeButton.dart';
 import 'package:test_flutter/MessageDetail.dart';
 
-import 'MessageCompose.dart';
+
+// import 'MessageCompose.dart';
 
 void main() => runApp(EmailApp());
 
@@ -132,6 +134,70 @@ class _MessageListState extends State<MessageList> {
                 },
             );
         },
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text('Amadou GAYE'), 
+              accountEmail: Text('gaye@volkeno.sn'),
+              currentAccountPicture: CircleAvatar(
+                  child: Text("G"),
+                  // backgroundImage: NetworkImage(url),
+                ),
+              otherAccountsPictures: <Widget>[
+                GestureDetector(
+                  onTap: (){
+                     showDialog(context: context, builder: (context){
+                          return AlertDialog(
+                            title: Text("Adding new account..."),
+                          );
+                     });
+                  },
+                  child: CircleAvatar(
+                    child: Icon(Icons.add),
+                 )
+                )
+              ],
+              ),
+            Padding(padding: 
+              EdgeInsets.only(top: 20),
+             ),
+            ListTile(
+               leading: Icon(Icons.inbox),
+               title: Text("Inbox"),
+               trailing: Chip(
+                 label: Text("12", style: TextStyle(fontWeight: FontWeight.bold),)    
+                 ),
+            ),
+            ListTile(
+               leading: Icon(Icons.edit),
+               title: Text("Draft"),
+            ),
+            ListTile(
+               leading: Icon(Icons.archive),
+               title: Text("Archive"),
+            ),
+            ListTile(
+               leading: Icon(Icons.send),
+               title: Text("Sent"),
+            ),
+             ListTile(
+                leading: Icon(Icons.delete),
+               title: Text("Trash"),
+            ),
+            Divider(),
+            Expanded(
+              child: Align(
+                 alignment: FractionalOffset.bottomCenter,
+                 child: ListTile(
+                 leading: Icon(Icons.collections),
+                 title: Text("Settings"),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton : ComposeButton(), 
     );
