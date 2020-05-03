@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:test_flutter/ComposeButton.dart';
+import 'package:test_flutter/MessageDetail.dart';
+
+import 'MessageCompose.dart';
 
 void main() => runApp(EmailApp());
 
@@ -103,6 +107,15 @@ class _MessageListState extends State<MessageList> {
           })
         ],
       ),
+      // floatingActionButton : FloatingActionButton(    
+      //     child: Icon(Icons.add),
+      //     onPressed: (){
+      //             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+      //                  return MessageCompose();       
+      //             }));
+      //           },
+                            
+      // ), 
       body:ListView.builder(
         itemCount: 6,
         // separatorBuilder: (Context, index) => Divider(),
@@ -120,10 +133,15 @@ class _MessageListState extends State<MessageList> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 ),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                       return MessageDetail();       
+                  }));
+                },
             );
         },
-      )
-             
+      ),
+      floatingActionButton : ComposeButton(), 
     );
   }
 }
