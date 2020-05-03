@@ -100,22 +100,14 @@ class _MessageListState extends State<MessageList> {
 
     return Scaffold(
       appBar: AppBar(        
-        title: Text('Email App Test'),
+        title: Text('Email App'),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.refresh), onPressed: (){
              //On peut faire une action ici 
           })
         ],
       ),
-      // floatingActionButton : FloatingActionButton(    
-      //     child: Icon(Icons.add),
-      //     onPressed: (){
-      //             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-      //                  return MessageCompose();       
-      //             }));
-      //           },
-                            
-      // ), 
+ 
       body:ListView.builder(
         itemCount: 6,
         // separatorBuilder: (Context, index) => Divider(),
