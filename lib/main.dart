@@ -115,23 +115,50 @@ class _MessageListState extends State<MessageList> {
         // separatorBuilder: (Context, index) => Divider(),
         itemBuilder: (BuildContext context, int index){
           var message = messages[index];
-            return ListTile(
-              title: Text(message['subject']),
-              isThreeLine: true,
-              trailing: Text('2'),
-               leading: CircleAvatar(
-                 child: Text("P1"),
-               ),
-              subtitle: Text(
-                message['body'],
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                ),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                       return MessageDetail();       
-                  }));
+            return Dismissible(
+                onDismissed: (direction){
+                  setState(() {
+                     messages.remove(index);
+                  });
+               
                 },
+                background: Container(
+                  color: Colors.red[300],
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        FontAwesomeIcons.trash,
+                        color: Colors.white,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4),
+                        ),
+                        Text("Delete", style: TextStyle(color: Colors.white),),
+                      ],
+                    ),                    
+                ), 
+                child: ListTile(
+                title: Text(message['subject']),
+                isThreeLine: true,
+                trailing: Text('2'),
+                 leading: CircleAvatar(
+                   child: Text("P1"),
+                 ),
+                subtitle: Text(
+                  message['body'],
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  ),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                         return MessageDetail();       
+                    }));
+                  },
+              ),
+                key: ObjectKey(message['subject']),
             );
         },
       ),

@@ -27,6 +27,7 @@ dependencies:
   webview_flutter:
   http:
   font_awesome_flutter:
+  flutter_slidable:
 
 dev_dependencies:
   flutter_test:
