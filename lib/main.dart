@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 import 'package:test_flutter/ComposeButton.dart';
 import 'package:test_flutter/MessageDetail.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 
 // import 'MessageCompose.dart';
@@ -115,31 +116,51 @@ class _MessageListState extends State<MessageList> {
         // separatorBuilder: (Context, index) => Divider(),
         itemBuilder: (BuildContext context, int index){
           var message = messages[index];
-            return Dismissible(
-                onDismissed: (direction){
-                  setState(() {
-                     messages.remove(index);
-                  });
-               
-                },
-                background: Container(
-                  color: Colors.red[300],
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        FontAwesomeIcons.trash,
-                        color: Colors.white,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(4),
-                        ),
-                        Text("Delete", style: TextStyle(color: Colors.white),),
-                      ],
-                    ),                    
-                ), 
+            return Slidable(
+            
+               actionPane: SlidableDrawerActionPane(),
+                actionExtentRatio: 0.25,
+                // child: Container(
+                //   color: Colors.white,
+                //   child: ListTile(
+                //     leading: CircleAvatar(
+                //       backgroundColor: Colors.indigoAccent,
+                //       child: Text('$3'),
+                //       foregroundColor: Colors.white,
+                //     ),
+                //     title: Text('Tile n°$3'),
+                //     subtitle: Text('SlidableDrawerDelegate'),
+                //   ),
+                // ),
+                actions: <Widget>[
+                  IconSlideAction(
+                    caption: 'Archive',
+                    color: Colors.blue,
+                    icon: Icons.archive,
+                    onTap: () => {},
+                  ),
+                  IconSlideAction(
+                    caption: 'Share',
+                    color: Colors.indigo,
+                    icon: Icons.share,
+                    onTap: () => {},
+                  ),
+                ],
+                secondaryActions: <Widget>[
+                  IconSlideAction(
+                    caption: 'More',
+                    color: Colors.black45,
+                    icon: Icons.more_horiz,
+                    onTap: () => {},
+                  ),
+                  IconSlideAction(
+                    caption: 'Delete',
+                    color: Colors.red,
+                    icon: Icons.delete,
+                    onTap: () => {},
+                  ),
+                ],
+
                 child: ListTile(
                 title: Text(message['subject']),
                 isThreeLine: true,
@@ -158,7 +179,7 @@ class _MessageListState extends State<MessageList> {
                     }));
                   },
               ),
-                key: ObjectKey(message['subject']),
+                // key: ObjectKey(message['subject']), actionPane: null,
             );
         },
       ),
