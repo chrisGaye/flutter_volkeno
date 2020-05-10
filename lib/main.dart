@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:test_flutter/App.dart';
 // import 'package:flutter/services.dart';
 
 // import 'package:http/http.dart' as http;
@@ -27,16 +28,16 @@ class EmailApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Test',
       theme: ThemeData( primarySwatch: Colors.green,),
-      home: MessageList(title: 'Email App OK oh'),
+      home: App(),
     );
   }
 }
 
 class MessageList extends StatefulWidget {
     
-  final String title;
+  // final String title;
   
-  MessageList({this.title});
+  // MessageList({this.title});
   
   @override
   State<StatefulWidget> createState() => _MessageListState();
@@ -44,36 +45,40 @@ class MessageList extends StatefulWidget {
 
 class _MessageListState extends State<MessageList> {
 
-
   @override
   Widget build(BuildContext context) {
     
     var messages = const [
     {
         "subject": "My first message",
-        "body" : "Nous developpons une App using Flutter. Donc pour commencer...Nous developpons une App using Flutter. Donc pour commencer..."
+        "body" : "Nous developpons une App using Flutter. Donc pour commencer...Nous developpons une App using Flutter. Donc pour commencer...",
+         "status": "other",
      },
      {
         "subject": "My second message",
-        "body" : "Veuillez lire ce message svp..."
+        "body" : "Veuillez lire ce message svp...",
+         "status": "other",
      },
      {
         "subject": "My 3rd message",
-        "body" : "Gaye vous dit bonjour et vous souhaite une bonne journée"
+        "body" : "Gaye vous dit bonjour et vous souhaite une bonne journée",
+         "status": "other",
      },
      {
         "subject": "My 4th message",
-        "body" : "Salut les amis, on va devoir tout recommencer d'ici la semaine prochaine"
+        "body" : "Salut les amis, on va devoir tout recommencer d'ici la semaine prochaine",
+        "status": "other",
      },
      {
         "subject": "Nouvelle entrée avec JSON",
-        "body" : "Entrée avec json pose problème avec la methode initState() qui refuse...Du coup j'ai tout mis dans le main.dart"
+        "body" : "Entrée avec json pose problème avec la methode initState() qui refuse...Du coup j'ai tout mis dans le main.dart",
+        "status": "other",
      },
      {
         "subject": "JSON",
-        "body" : "The serialize method..."
+        "body" : "The serialize method...",
+        "status": "other",
      }
-
 ];
      
     // List<MessageList> message = [];
@@ -102,14 +107,14 @@ class _MessageListState extends State<MessageList> {
     // }
 
     return Scaffold(
-      appBar: AppBar(        
-        title: Text('Email App'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.refresh), onPressed: (){
-             //On peut faire une action ici 
-          })
-        ],
-      ),
+      // appBar: AppBar(        
+      //   title: Text('Email App'),
+      //   actions: <Widget>[
+      //     IconButton(icon: Icon(Icons.refresh), onPressed: (){
+      //        //On peut faire une action ici 
+      //     })
+      //   ],
+      // ),
  
       body:ListView.builder(
         itemCount: 6,
@@ -182,72 +187,7 @@ class _MessageListState extends State<MessageList> {
                 // key: ObjectKey(message['subject']), actionPane: null,
             );
         },
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text('Amadou GAYE'), 
-              accountEmail: Text('gaye@volkeno.sn'),
-              currentAccountPicture: CircleAvatar(
-                  child: Text("G"),
-                  // backgroundImage: NetworkImage(url),
-                ),
-              otherAccountsPictures: <Widget>[
-                GestureDetector(
-                  onTap: (){
-                     showDialog(context: context, builder: (context){
-                          return AlertDialog(
-                            title: Text("Adding new account..."),
-                          );
-                     });
-                  },
-                  child: CircleAvatar(
-                    child: Icon(Icons.add),
-                 )
-                )
-              ],
-              ),
-            Padding(padding: 
-              EdgeInsets.only(top: 20),
-             ),
-            ListTile(
-               leading: Icon(Icons.inbox),
-               title: Text("Inbox"),
-               trailing: Chip(
-                 label: Text("12", style: TextStyle(fontWeight: FontWeight.bold),)    
-                 ),
-            ),
-            ListTile(
-               leading: Icon(Icons.edit),
-               title: Text("Draft"),
-            ),
-            ListTile(
-               leading: Icon(Icons.archive),
-               title: Text("Archive"),
-            ),
-            ListTile(
-               leading: Icon(Icons.send),
-               title: Text("Sent"),
-            ),
-             ListTile(
-                leading: Icon(Icons.delete),
-               title: Text("Trash"),
-            ),
-            Divider(),
-            Expanded(
-              child: Align(
-                 alignment: FractionalOffset.bottomCenter,
-                 child: ListTile(
-                 leading: Icon(Icons.collections),
-                 title: Text("Settings"),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton : ComposeButton(), 
+      ), 
     );
   }
 }
